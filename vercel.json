@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/articles/:path*",
-      "destination": "https://www.pagegun.com/p/YOUR_PROJECT_ID/articles/:path*"
+      "destination": "https://www.pagegun.com/p/PMpWZt3L/articles/:path*"
     }
   ]
 }
