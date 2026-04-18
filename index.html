@@ -28,7 +28,13 @@
     .card .emoji { font-size: 2rem; margin-bottom: 0.75rem; }
     .section { max-width: 900px; margin: 0 auto; padding: 3rem 1rem; }
     .section h2 { font-size: 1.5rem; margin-bottom: 1rem; text-align: center; }
-    .section p { color: #555; line-height: 1.8; text-align: center; max-width: 600px; margin: 0 auto; }
+    .section > p { color: #555; line-height: 1.8; text-align: center; max-width: 600px; margin: 0 auto; }
+    .articles { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 2rem; }
+    .article-card { background: #fff; border-radius: 12px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: transform 0.2s, box-shadow 0.2s; text-decoration: none; color: inherit; display: block; }
+    .article-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(108,92,231,0.12); }
+    .article-card h3 { font-size: 1.05rem; margin-bottom: 0.5rem; color: #1a1a2e; line-height: 1.4; }
+    .article-card p { font-size: 0.9rem; color: #666; line-height: 1.5; }
+    .article-card .tag { display: inline-block; font-size: 0.75rem; color: #6c5ce7; background: #f3f1ff; padding: 0.15rem 0.5rem; border-radius: 4px; margin-bottom: 0.5rem; }
     .footer { background: #1a1a2e; color: #aaa; text-align: center; padding: 2rem; margin-top: 3rem; }
     .footer a { color: #a29bfe; text-decoration: none; }
     .footer p { font-size: 0.85rem; line-height: 1.8; }
@@ -43,10 +49,8 @@
   <header class="header">
     <a href="/" class="logo">Amengka's Curated AI Tools</a>
     <nav>
-      <a href="/articles">Reviews</a>
-      <a href="/guides">Guides</a>
-      <a href="/comparisons">Comparisons</a>
-      <a href="/about">About</a>
+      <a href="#latest">Latest</a>
+      <a href="#about">About</a>
     </nav>
   </header>
 
@@ -78,7 +82,18 @@
     </div>
   </div>
 
-  <section class="section">
+  <section class="section" id="latest">
+    <h2>Latest Articles</h2>
+    <div class="articles">
+      <a class="article-card" href="/articles/cursor-vs-github-copilot-vs-claude-code-2026">
+        <span class="tag">Review</span>
+        <h3>Cursor vs GitHub Copilot vs Claude Code 2026</h3>
+        <p>An in-depth, friendly comparison of coding assistants — pricing, free tiers, and real-world use.</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="section" id="about">
     <h2>Why Amengka's Curated Picks?</h2>
     <p>There are thousands of AI tools out there, and new ones launch every day. I personally test every tool I recommend, evaluating them from real-world use cases. No sponsored posts, no ads — just honest recommendations.</p>
   </section>
