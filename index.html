@@ -9,6 +9,7 @@
   <meta property="og:description" content="Handpicked AI tool recommendations and in-depth reviews.">
   <meta property="og:type" content="website">
   <link rel="icon" href="/favicon.ico">
+  <script defer data-domain="amengka.com" src="https://plausible.io/js/script.js"></script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: #1a1a2e; background: #fafafa; }
@@ -21,8 +22,9 @@
     .hero h1 { font-size: 2.5rem; margin-bottom: 1rem; }
     .hero p { font-size: 1.15rem; opacity: 0.9; max-width: 600px; margin: 0 auto 2rem; }
     .categories { max-width: 900px; margin: -2rem auto 3rem; padding: 0 1rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
-    .card { background: #fff; border-radius: 12px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: transform 0.2s; }
+    .card { background: #fff; border-radius: 12px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: transform 0.2s, box-shadow 0.2s; cursor: pointer; border: 2px solid transparent; }
     .card:hover { transform: translateY(-2px); }
+    .card.active { border-color: #6c5ce7; box-shadow: 0 4px 16px rgba(108,92,231,0.18); }
     .card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
     .card p { font-size: 0.9rem; color: #666; line-height: 1.5; }
     .card .emoji { font-size: 2rem; margin-bottom: 0.75rem; }
@@ -60,22 +62,22 @@
   </section>
 
   <div class="categories">
-    <div class="card">
+    <div class="card" data-category="writing">
       <div class="emoji">✍️</div>
       <h3>AI Writing Tools</h3>
       <p>Deep dives into ChatGPT, Claude, Gemini, and other writing assistants. Tips, tricks, and real-world use cases.</p>
     </div>
-    <div class="card">
+    <div class="card" data-category="coding">
       <div class="emoji">💻</div>
       <h3>AI Coding Tools</h3>
       <p>Cursor, GitHub Copilot, Claude Code, and more. Head-to-head comparisons for developers.</p>
     </div>
-    <div class="card">
+    <div class="card" data-category="design">
       <div class="emoji">🎨</div>
       <h3>AI Design Tools</h3>
       <p>Midjourney, DALL-E, Stable Diffusion, and emerging image generation tools reviewed.</p>
     </div>
-    <div class="card">
+    <div class="card" data-category="productivity">
       <div class="emoji">📊</div>
       <h3>AI Productivity Tools</h3>
       <p>Notion AI, Perplexity, automation workflows, and tools that save you hours every week.</p>
@@ -85,7 +87,7 @@
   <section class="section" id="latest">
     <h2>Latest Articles</h2>
     <div class="articles">
-      <a class="article-card" href="/articles/cursor-vs-github-copilot-vs-claude-code-2026">
+      <a class="article-card" href="/articles/cursor-vs-github-copilot-vs-claude-code-2026" data-category="coding">
         <span class="tag">Review</span>
         <h3>Cursor vs GitHub Copilot vs Claude Code 2026</h3>
         <p>An in-depth, friendly comparison of coding assistants — pricing, free tiers, and real-world use.</p>
@@ -102,5 +104,34 @@
     <p>Amengka's Curated AI Tools — Handpicked AI tool recommendations and in-depth reviews.</p>
     <p>&copy; 2026 Amengka. Built with <a href="https://www.pagegun.com" target="_blank">PageGun</a>.</p>
   </footer>
+
+  <script>
+    (function () {
+      var cards = document.querySelectorAll('.categories .card[data-category]');
+      var articles = document.querySelectorAll('.articles .article-card');
+      var active = null;
+
+      function apply(cat) {
+        articles.forEach(function (a) {
+          a.style.display = (!cat || a.dataset.category === cat) ? '' : 'none';
+        });
+        cards.forEach(function (c) {
+          c.classList.toggle('active', cat === c.dataset.category);
+        });
+      }
+
+      cards.forEach(function (card) {
+        card.addEventListener('click', function () {
+          var cat = card.dataset.category;
+          active = (active === cat) ? null : cat;
+          apply(active);
+          if (active) {
+            var latest = document.getElementById('latest');
+            if (latest) latest.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
