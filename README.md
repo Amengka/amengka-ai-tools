@@ -10,10 +10,14 @@ Handpicked AI tool recommendations and in-depth reviews. Powered by [PageGun](ht
 
 - **Landing page** — `index.html`, hosted on Vercel at amengka.com
 - **PageGun project** — `PMpWZt3L` (rewrite mode)
-- **Articles live:**
-  - `/articles/cursor-vs-github-copilot-vs-claude-code-2026` — Review
+- **Articles live (5):**
+  - `/articles/cursor-vs-github-copilot-vs-claude-code-2026` — Review (coding)
+  - `/articles/10-free-ai-tools-worth-trying-in-2026` — Roundup (productivity)
+  - `/articles/how-to-run-stable-diffusion-locally-complete-setup-guide` — Guide (design)
+  - `/articles/how-small-teams-use-ai-tools-to-cut-costs-real-examples` — Case study (productivity)
+  - `/articles/will-ai-coding-tools-replace-developers` — Opinion (coding)
 
-Run `bash generate-articles.sh` (see below) to add 4 more covering listicle, guide, case study, and opinion formats.
+Run `bash generate-articles.sh` to add more (customize the `articles` array inside the script first).
 
 ---
 
